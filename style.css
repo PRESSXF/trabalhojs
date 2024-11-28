@@ -1,0 +1,679 @@
+/* Paleta de Cores */
+:root {
+  --primary-color: #4E73DF; /* Azul Claro */
+  --secondary-color: #1E2A47; /* Azul Escuro */
+  --background-light: #2e292949; /* Fundo Claro */
+  --background-dark: #000000; /* Fundo Escuro */
+  --text-light: #ffffff; /* Texto Claro */
+  --text-dark: #000000; /* Texto Escuro */
+  --highlight-color: #A1C4FD; /* Azul Suave */
+  --button-color: #61A0FF; /* Azul Vibrante */
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  color: var(--text-dark);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+/* Cabeçalho e Rodapé */
+header, footer {
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  color: var(--text-light);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+footer {
+  margin-top: 3rem;
+  background: linear-gradient(45deg, var(--secondary-color), var(--highlight-color));
+}
+
+/* Menu de Navegação */
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header nav ul li a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem;
+  transition: color 0.3s, transform 0.3s ease-in-out;
+}
+
+header nav ul li a:hover {
+  color: var(--highlight-color);
+  transform: translateY(-3px);
+}
+
+/* Botão */
+button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Layout Principal */
+main {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Estilos da Galeria */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid flexível */
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.card {
+  background-color: var(--background-light);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+}
+
+.card p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+/* Formulário de Cadastro */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: var(--background-light);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+form input, form textarea {
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+form input:focus, form textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(248, 180, 0, 0.5);
+  outline: none;
+}
+
+form button {
+  margin-top: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .galeria {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .integrante {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
+
+/* Seção Sobre */
+#sobre .integrantes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.integrante {
+  flex: 1 1 calc(33.33% - 2rem);
+  background-color: var(--background-light);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.integrante img.profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.integrante h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.integrante p {
+  margin-bottom: 1rem;
+}
+
+.integrante ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.integrante li {
+  margin-bottom: 0.5rem;
+}
+
+.integrante:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Modo escuro */
+body.dark-mode {
+  background-color: #0d0e11;
+  color: #ffffff;
+}
+
+body.dark-mode header {
+  background-color: #353333;
+}
+
+body.dark-mode .integrante {
+  background-color: #212121;
+}
+
+body.dark-mode .card {
+  background-color: #343434;
+  border-color: #ffffff;
+}
+
+body.dark-mode .header-controls button {
+  background-color: #2f2f2f;
+  color: #fbfbfb;
+}
+
+body.dark-mode footer {
+  background-color: #000000;
+}
+
+/* Layout para a Galeria de Imagens */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid flexível */
+  gap: 1rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: var(--background-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* Efeito de hover para dar profundidade */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz as imagens se ajustarem sem distorcer */
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1; /* Mostra a sobreposição ao passar o mouse */
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #fff;
+}
+/* Cabeçalho e Rodapé */
+header, footer {
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  color: var(--text-light);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  position: relative; /* Para garantir que o conteúdo flua corretamente */
+}
+
+footer {
+  margin-top: 3rem;
+  background: linear-gradient(45deg, var(--secondary-color), var(--highlight-color));
+}
+
+/* Menu de Navegação */
+header nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+header nav ul li a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.3s, transform 0.3s ease-in-out;
+}
+
+header nav ul li a:hover {
+  color: var(--highlight-color);
+  transform: translateY(-3px);
+}
+
+/* Logo do Cabeçalho */
+header .logo {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividade para o Cabeçalho */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  header .logo {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+  }
+
+  header nav ul li a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header nav ul li a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Estilos da Galeria Profissional */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid flexível com ajuste automático */
+  gap: 2rem;
+  padding: 3rem 2rem;
+  justify-items: center;
+}
+
+.card {
+  background-color: var(--background-light);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Imagem ocupa o espaço sem distorcer */
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05); /* Zoom suave na imagem */
+}
+
+.card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Sobreposição mais escura */
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+}
+
+.card:hover .overlay {
+  opacity: 1; /* Exibe a sobreposição ao passar o mouse */
+}
+
+.card .description {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Container da Galeria */
+.gallery-container {
+  display: flex;
+  flex-direction: column; /* Alinha as imagens e texto de forma vertical */
+  gap: 2rem;
+  justify-items: center;
+  padding: 0 2rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1); /* Aumenta a imagem ao passar o mouse */
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Sobreposição de Texto */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+/* Responsividade para a Galeria */
+@media (max-width: 768px) {
+  .gallery-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajuste para telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    grid-template-columns: 1fr; /* Para telas muito pequenas, exibe uma coluna */
+  }
+}
+
+/* Estilo da imagem normal */
+.imagem {
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Estilo do modal (janela pop-up) */
+.modal {
+  display: none; /* Inicialmente escondido */
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.modal-content {
+  margin: auto;
+  width: 80%;
+  max-width: 700px;
+  height: auto;
+}
+
+.close {
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilo para o pop-up de informação */
+#modalCaption {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Estilo padrão para telas grandes */
+body {
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* Ajustes para telas menores (como smartphones) */
+@media (max-width: 768px) {
+  body {
+      font-size: 14px;
+      padding: 10px;
+  }
+
+  .menu {
+      flex-direction: column; /* Menu vertical em dispositivos móveis */
+  }
+
+  .card {
+      width: 100%; /* Cards ocupam toda a largura da tela */
+  }
+}
+
+/* Ajustes ainda menores (telas muito pequenas, como celulares antigos) */
+@media (max-width: 480px) {
+  body {
+      font-size: 12px;
+  }
+
+  .header {
+      flex-direction: column;
+      text-align: center; /* Centralizar textos no cabeçalho */
+  }
+}
+
+.menu.visible {
+  display: flex; /* Mostra o menu quando a classe 'visible' é adicionada */
+}
+
+.menu a {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.container {
+  width: 90%; /* Em vez de 500px, use uma porcentagem */
+  max-width: 1200px; /* Limite a largura máxima */
+  margin: 0 auto; /* Centraliza o container */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

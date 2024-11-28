@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastro no grupo">
+    <meta name="keywords" content="cadastro, grupo, inscrição">
+    <meta name="author" content="Grupo Exposição">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <button id="toggle-dark-mode">Modo Escuro</button>
+            <button id="increase-font-size">Aumentar Fonte</button>
+            <button id="decrease-font-size">Diminuir Fonte</button>            
+        </div>
+    </header>     
+    <main>
+        <section id="cadastro" aria-labelledby="cadastroHeading">
+            <h2 id="cadastroHeading">Cadastro</h2>
+            <form id="cadastroForm" novalidate>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required minlength="3" aria-describedby="nomeError">
+                <div id="nomeError" class="form-error" aria-live="polite"></div>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required aria-describedby="emailError">
+                <div id="emailError" class="form-error" aria-live="polite"></div>
+
+                <label for="feedback">Opinião:</label>
+                <textarea id="feedback" name="feedback" placeholder="Digite sua opinião aqui"></textarea>
+
+                <div id="formError" class="form-error" aria-live="polite"></div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Grupo Exposição</p>
+    </footer>
+
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Resetando erros
+            document.getElementById('nomeError').innerText = '';
+            document.getElementById('emailError').innerText = '';
+            document.getElementById('formError').innerText = '';
+
+            let isValid = true;
+
+            // Validação do campo "Nome"
+            const nome = document.getElementById('nome');
+            if (nome.value.trim().length < 3) {
+                document.getElementById('nomeError').innerText = 'O nome precisa ter pelo menos 3 caracteres.';
+                nome.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                nome.style.borderColor = '';
+            }
+
+            // Validação do campo "Email"
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                document.getElementById('emailError').innerText = 'Por favor, insira um email válido.';
+                email.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                email.style.borderColor = '';
+            }
+
+            if (isValid) {
+                // Aqui você pode fazer o envio do formulário
+                alert('Cadastro realizado com sucesso!');
+                document.getElementById('cadastroForm').reset();
+            } else {
+                document.getElementById('formError').innerText = 'Por favor, corrija os erros acima.';
+            }
+        });
+    </script>
+</body>
+</html>
